@@ -1,3 +1,4 @@
+import 'package:calculator/views/calculatorview.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,11 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Calculator App",
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
+      theme: ThemeData.dark(
         useMaterial3: true,
       ),
+      home: const CalCulatorView(),
     );
   }
 }
