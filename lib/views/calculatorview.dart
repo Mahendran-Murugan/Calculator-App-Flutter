@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CalCulatorView extends StatefulWidget {
-  const CalCulatorView({super.key});
+class CalculatorView extends StatelessWidget {
+  const CalculatorView({super.key});
 
-  @override
-  State<CalCulatorView> createState() => _CalCulatorViewState();
-}
-
-class _CalCulatorViewState extends State<CalCulatorView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,9 +11,22 @@ class _CalCulatorViewState extends State<CalCulatorView> {
           "Calculator",
           style: TextStyle(
             color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.w500,
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 35, 35, 35),
+        backgroundColor: Colors.grey[700],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(),
+          ),
+          Expanded(
+            flex: 2,
+            child: Container(),
+          ),
+        ],
       ),
     );
   }

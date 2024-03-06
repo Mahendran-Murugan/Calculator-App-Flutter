@@ -13,10 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Calculator App",
-      theme: ThemeData.dark(
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey),
         useMaterial3: true,
       ),
-      home: const CalCulatorView(),
+      home: const CalculatorView(),
     );
   }
 }
