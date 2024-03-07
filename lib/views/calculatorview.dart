@@ -10,6 +10,10 @@ class CalculatorView extends StatefulWidget {
 }
 
 class _CalculatorViewState extends State<CalculatorView> {
+  void onClick(int btnText) {
+    print(btnText);
+  }
+
   final List<String> buttons = [
     'C',
     'DEL',
@@ -57,7 +61,18 @@ class _CalculatorViewState extends State<CalculatorView> {
       body: Column(
         children: [
           Expanded(
-            child: Container(),
+            child: Container(
+              padding: EdgeInsets.only(bottom: 40, right: 30),
+              alignment: Alignment.bottomRight,
+              child: const Text(
+                "0",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
           Expanded(
             flex: 2,
