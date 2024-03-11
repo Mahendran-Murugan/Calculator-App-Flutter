@@ -10,9 +10,8 @@ class CalculatorView extends StatefulWidget {
 }
 
 class _CalculatorViewState extends State<CalculatorView> {
-  void onClick(int btnText) {
-    print(btnText);
-  }
+  var question = '';
+  var answer = '';
 
   final List<String> buttons = [
     'C',
@@ -45,11 +44,11 @@ class _CalculatorViewState extends State<CalculatorView> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Padding(
-          padding: EdgeInsets.all(20.0),
+        title: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Text(
-            "Calculator",
-            style: TextStyle(
+            question,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 25,
               fontWeight: FontWeight.w500,
@@ -62,7 +61,7 @@ class _CalculatorViewState extends State<CalculatorView> {
         children: [
           Expanded(
             child: Container(
-              padding: EdgeInsets.only(bottom: 40, right: 30),
+              padding: const EdgeInsets.only(bottom: 40, right: 30),
               alignment: Alignment.bottomRight,
               child: const Text(
                 "0",
