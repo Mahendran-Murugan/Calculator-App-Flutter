@@ -1,16 +1,45 @@
-# calculator
+# Calculator App - Flutter
 
-A new Flutter project.
+A sleek and functional Calculator App developed using Flutter for Android.
+
+## Features
+
+- **Beautiful UI:** Crafted with Flutter to provide an engaging and visually appealing user interface.
+- **Smart Calculations:** Utilizes the mathexpressions dependency for precise execution of complex mathematical expressions.
+- **Open Source:** Feel free to explore the code, contribute, and customize according to your needs.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To explore the Helping Buddy Website, simply click on the following link: [https://mahendran45.pythonanywhere.com](https://mahendran45.pythonanywhere.com/)
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Make sure you have Flutter installed. If not, follow the [Flutter Installation Guide](https://flutter.dev/docs/get-started/install).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Navigate Project
+
+1. Clone the repository:
+   `git clone https://github.com/Mahendran-Murugan/Calculator-App-Flutter.git`
+
+2.Navigate to the project directory:
+   `cd Calculator-App-Flutter`
+
+3.Run the App
+   `flutter run`
+
+
+### How to Contribute
+
+We welcome contributions to enhance and improve the Helping Buddy Website. If you're interested in contributing, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix: `git checkout -b feature/your-feature-name`.
+3. Make your changes and commit them: `git commit -m 'Add your feature'`.
+4. Push to your branch: `git push origin feature/your-feature-name`.
+5. Open a pull request.
+
+### Feedback and Issues
+
+We appreciate any feedback or bug reports. If you encounter any issues or have suggestions for improvement, please [open an issue](https://github.com/Mahendran-Murugan/Django-Projects/issues).
+
+Thank you for exploring the Helping Buddy Website! We hope it serves as a valuable platform for connecting individuals with shared interests.
