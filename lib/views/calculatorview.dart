@@ -1,8 +1,7 @@
 import 'package:calculator/utils/custom_button.dart';
 import 'package:calculator/utils/operator_check.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:calculator/utils/equal_check.dart';
 
 class CalculatorView extends StatefulWidget {
   const CalculatorView({super.key});
@@ -17,12 +16,10 @@ class _CalculatorViewState extends State<CalculatorView> {
 
   void getUserInput(int index) {
     setState(() {
-      if (!isOperator(buttons[index])) {
-        if (question[0] == '0' && question.length == 1) {
-          question = buttons[index];
-        } else {
-          question += buttons[index];
-        }
+      if (question[0] == '0' && question.length == 1) {
+        question = buttons[index];
+      } else {
+        question += buttons[index];
       }
     });
   }
@@ -50,7 +47,7 @@ class _CalculatorViewState extends State<CalculatorView> {
     '+',
     '0',
     '.',
-    "ANS",
+    "00",
     '=',
   ];
   @override
@@ -134,18 +131,30 @@ class _CalculatorViewState extends State<CalculatorView> {
                     },
                     btnText: buttons[index],
                     color: Colors.blue[600]!,
-                    textColor: Colors.red[200]!,
+                    textColor: Colors.white,
                   );
                 } else if (index == 1) {
                   return CustomButton(
                     buttonTapped: () => {
                       setState(() {
                         question = '0';
+                        answer = '0';
                       })
                     },
                     btnText: buttons[index],
                     color: Colors.blue[600]!,
-                    textColor: Colors.red[200]!,
+                    textColor: Colors.white,
+                  );
+                } else if (index == buttons.length - 1) {
+                  return CustomButton(
+                    buttonTapped: () => {
+                      setState(() {
+                        answer = equalCheck(question);
+                      })
+                    },
+                    btnText: buttons[index],
+                    color: Colors.blue,
+                    textColor: Colors.white,
                   );
                 }
                 return CustomButton(
