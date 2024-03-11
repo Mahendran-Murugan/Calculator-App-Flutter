@@ -1,6 +1,8 @@
 import 'package:calculator/utils/custom_button.dart';
 import 'package:calculator/utils/operator_check.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class CalculatorView extends StatefulWidget {
   const CalculatorView({super.key});
@@ -11,7 +13,7 @@ class CalculatorView extends StatefulWidget {
 
 class _CalculatorViewState extends State<CalculatorView> {
   var question = '0';
-  var answer = '';
+  var answer = '0';
 
   void getUserInput(int index) {
     setState(() {
@@ -73,39 +75,88 @@ class _CalculatorViewState extends State<CalculatorView> {
         children: [
           Expanded(
             child: Container(
-              padding: const EdgeInsets.only(bottom: 40, right: 30),
-              alignment: Alignment.bottomRight,
-              child: Text(
-                question,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+                padding: const EdgeInsets.only(bottom: 40, right: 30),
+                alignment: Alignment.bottomRight,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        question,
+                        style: const TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        answer,
+                        style: TextStyle(
+                          color: Colors.grey[700],
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
           ),
           Expanded(
             flex: 2,
             child: GridView.builder(
               itemCount: buttons.length,
+              physics: const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4,
                 childAspectRatio: MediaQuery.of(context).size.width /
-                    (MediaQuery.of(context).size.height / 2.6),
+                    (MediaQuery.of(context).size.height / 2.7),
               ),
               itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () => getUserInput(index),
-                  child: CustomButton(
+                if (index == 0) {
+                  return CustomButton(
+                    buttonTapped: () => {
+                      setState(() {
+                        final length = question.length;
+                        if (length > 1) {
+                          question = question.substring(0, length - 1);
+                        } else {
+                          question = '0';
+                        }
+                      })
+                    },
                     btnText: buttons[index],
-                    color: isOperator(buttons[index])
-                        ? Colors.blue
-                        : Colors.blue[100]!,
-                    textColor: isOperator(buttons[index])
-                        ? Colors.white
-                        : Colors.blue[800]!,
-                  ),
+                    color: Colors.blue[600]!,
+                    textColor: Colors.red[200]!,
+                  );
+                } else if (index == 1) {
+                  return CustomButton(
+                    buttonTapped: () => {
+                      setState(() {
+                        question = '0';
+                      })
+                    },
+                    btnText: buttons[index],
+                    color: Colors.blue[600]!,
+                    textColor: Colors.red[200]!,
+                  );
+                }
+                return CustomButton(
+                  buttonTapped: () => {getUserInput(index)},
+                  btnText: buttons[index],
+                  color: isOperator(buttons[index])
+                      ? Colors.blue
+                      : Colors.blue[100]!,
+                  textColor: isOperator(buttons[index])
+                      ? Colors.white
+                      : Colors.blue[800]!,
                 );
               },
             ),

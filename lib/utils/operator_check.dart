@@ -4,7 +4,8 @@ bool isOperator(String ele) {
       ele == '-' ||
       ele == 'x' ||
       ele == '*' ||
-      ele == '/') {
+      ele == '/' ||
+      ele == '=') {
     return true;
   }
   return false;
