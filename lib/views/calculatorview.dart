@@ -10,8 +10,20 @@ class CalculatorView extends StatefulWidget {
 }
 
 class _CalculatorViewState extends State<CalculatorView> {
-  var question = '';
+  var question = '0';
   var answer = '';
+
+  void getUserInput(int index) {
+    setState(() {
+      if (!isOperator(buttons[index])) {
+        if (question[0] == '0' && question.length == 1) {
+          question = buttons[index];
+        } else {
+          question += buttons[index];
+        }
+      }
+    });
+  }
 
   final List<String> buttons = [
     'C',
@@ -44,11 +56,11 @@ class _CalculatorViewState extends State<CalculatorView> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Padding(
-          padding: const EdgeInsets.all(20.0),
+        title: const Padding(
+          padding: EdgeInsets.all(20.0),
           child: Text(
-            question,
-            style: const TextStyle(
+            "Calculator",
+            style: TextStyle(
               color: Colors.white,
               fontSize: 25,
               fontWeight: FontWeight.w500,
@@ -63,10 +75,10 @@ class _CalculatorViewState extends State<CalculatorView> {
             child: Container(
               padding: const EdgeInsets.only(bottom: 40, right: 30),
               alignment: Alignment.bottomRight,
-              child: const Text(
-                "0",
+              child: Text(
+                question,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
                 ),
@@ -83,14 +95,17 @@ class _CalculatorViewState extends State<CalculatorView> {
                     (MediaQuery.of(context).size.height / 2.6),
               ),
               itemBuilder: (context, index) {
-                return CustomButton(
-                  btnText: buttons[index],
-                  color: isOperator(buttons[index])
-                      ? Colors.blue
-                      : Colors.blue[100]!,
-                  textColor: isOperator(buttons[index])
-                      ? Colors.white
-                      : Colors.blue[800]!,
+                return GestureDetector(
+                  onTap: () => getUserInput(index),
+                  child: CustomButton(
+                    btnText: buttons[index],
+                    color: isOperator(buttons[index])
+                        ? Colors.blue
+                        : Colors.blue[100]!,
+                    textColor: isOperator(buttons[index])
+                        ? Colors.white
+                        : Colors.blue[800]!,
+                  ),
                 );
               },
             ),
